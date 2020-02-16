@@ -1,0 +1,78 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mpasturi <mpasturi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/15 20:31:26 by mpasturi          #+#    #+#             */
+/*   Updated: 2020/02/16 12:42:51 by mpasturi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+int		ft_right(char const *s1, char const *set, size_t len_str)
+{
+	size_t	right;
+	int		i;
+
+	i = 0;
+	right = (len_str - 1);
+	while (set[i] != '\0')
+	{
+		if (s1[right] == set[i])
+		{
+			right--;
+			i = -1;
+		}
+		i++;
+	}
+	return (right);
+}
+
+int		ft_left(char const *s1, char const *set)
+{
+	size_t	left;
+	int		i;
+
+	i = 0;
+	left = 0;
+	while (set[i] != '\0')
+	{
+		if (s1[left] == set[i])
+		{
+			left++;
+			i = -1;
+		}
+		i++;
+	}
+	return (left);
+}
+
+char	*ft_strtrim(char const *s1, char const *set)
+{
+	size_t	left;
+	size_t	right;
+	size_t	len_str;
+	size_t	i;
+	char	*str;
+
+	if (s1 == 0 || set == 0)
+		return (0);
+	len_str = ft_strlen(s1);
+	right = ft_right(s1, set, len_str);
+	left = ft_left(s1, set);
+	if ((int)(right - left) <= 0)
+		return (ft_strdup("\0"));
+	str = malloc((right - left + 2) * sizeof(char));
+	i = 0;
+	while (left <= right)
+	{
+		str[i] = s1[left];
+		left++;
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
+}
