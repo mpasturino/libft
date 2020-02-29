@@ -6,62 +6,55 @@
 /*   By: mpasturi <mpasturi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 12:52:34 by mpasturi          #+#    #+#             */
-/*   Updated: 2020/02/16 17:11:57 by mpasturi         ###   ########.fr       */
+/*   Updated: 2020/02/29 11:54:07 by mpasturi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-int		ft_isnegative(int n)
-{
-	if (n < 0)
-		return (1);
-	return (0);
-}
 
 int		ft_lenchar(int n)
 {
 	int	i;
 
 	i = 0;
+	if (n == -2147483648)
+		n = n + 1;
 	if (n < 0)
 	{
 		n = n * -1;
+		i++;
 	}
-	while (n > 0)
+	while (n / 10 > 0)
 	{
 		n = n / 10;
 		i++;
 	}
-	return (i);
-}
-
-char	ft_numchar(int n)
-{
-	char	c;
-
-	c = 48 + n;
-	return (c);
+	return (i + 1);
 }
 
 char	*ft_itoa(int n)
 {
 	char	*str;
 	int		len;
+	int		i;
 
-	len = ft_isnegative(n) + ft_lenchar(n) + 1;
-	str = malloc(len * sizeof(char));
+	i = 0;
+	str = malloc((ft_lenchar(n) + 1) * sizeof(char));
 	if (str == 0)
 		return (0);
 	if (n < 0)
 	{
 		str[0] = '-';
-		n = n * -1;
+		i++;
 	}
-	str[len - 1] = '\0';
-	while (n > 0)
+	str[ft_lenchar(n)] = '\0';
+	len = ft_lenchar(n) - 1;
+	while (len >= i)
 	{
-		str[len - 2] = ft_numchar(n % 10);
+		if (n < 0)
+			str[len] = (n % 10) * -1 + 48;
+		else
+			str[len] = n % 10 + 48;
 		n = n / 10;
 		len--;
 	}
