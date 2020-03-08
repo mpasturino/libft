@@ -6,7 +6,7 @@
 /*   By: mpasturi <mpasturi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 20:12:55 by mpasturi          #+#    #+#             */
-/*   Updated: 2020/03/08 16:37:51 by mpasturi         ###   ########.fr       */
+/*   Updated: 2020/03/08 17:34:12 by mpasturi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	z;
 
 	len = ft_strlen(s1) + ft_strlen(s2);
-	str = malloc((len + 1) * sizeof(char));
+	if (!(str = malloc((len + 1) * sizeof(char))))
+		return (0);
 	i = 0;
 	z = 0;
 	while (s1[z] != '\0')
