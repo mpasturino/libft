@@ -6,18 +6,17 @@
 /*   By: mpasturi <mpasturi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 19:46:32 by mpasturi          #+#    #+#             */
-/*   Updated: 2020/01/26 19:57:27 by mpasturi         ###   ########.fr       */
+/*   Updated: 2020/03/08 16:14:33 by mpasturi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 int	ft_toupper(int c)
 {
-	unsigned char uc;
-
-	uc = ((unsigned char)c);
-	if (uc >= 'a' && uc <= 'z')
+	if (c >= 'a' && c <= 'z')
 	{
-		return (uc + 'A' - 'a');
+		c = c - 32;
 	}
-	return (uc);
+	return (c);
 }

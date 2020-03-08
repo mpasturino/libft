@@ -6,13 +6,13 @@
 /*   By: mpasturi <mpasturi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 15:16:18 by mpasturi          #+#    #+#             */
-/*   Updated: 2020/02/01 21:26:51 by mpasturi         ###   ########.fr       */
+/*   Updated: 2020/03/08 15:57:17 by mpasturi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strlcpy(char *dst, const char *src, size_t dstsize)
+size_t		ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
 	size_t	index;
 	size_t	count_src;

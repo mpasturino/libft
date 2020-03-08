@@ -5,74 +5,51 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpasturi <mpasturi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/15 20:31:26 by mpasturi          #+#    #+#             */
-/*   Updated: 2020/02/16 12:42:51 by mpasturi         ###   ########.fr       */
+/*   Created: 2020/03/08 15:30:52 by mpasturi          #+#    #+#             */
+/*   Updated: 2020/03/08 16:38:23 by mpasturi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_right(char const *s1, char const *set, size_t len_str)
+static int	ft_isset(char c, char const *set)
 {
-	size_t	right;
-	int		i;
+	int i;
 
 	i = 0;
-	right = (len_str - 1);
 	while (set[i] != '\0')
 	{
-		if (s1[right] == set[i])
-		{
-			right--;
-			i = -1;
-		}
+		if (set[i] == c)
+			return (1);
 		i++;
 	}
-	return (right);
+	return (0);
 }
 
-int		ft_left(char const *s1, char const *set)
+char		*ft_strtrim(char const *s1, char const *set)
 {
-	size_t	left;
-	int		i;
-
-	i = 0;
-	left = 0;
-	while (set[i] != '\0')
-	{
-		if (s1[left] == set[i])
-		{
-			left++;
-			i = -1;
-		}
-		i++;
-	}
-	return (left);
-}
-
-char	*ft_strtrim(char const *s1, char const *set)
-{
-	size_t	left;
-	size_t	right;
-	size_t	len_str;
-	size_t	i;
 	char	*str;
+	size_t	start;
+	size_t	end;
 
 	if (s1 == 0 || set == 0)
 		return (0);
-	len_str = ft_strlen(s1);
-	right = ft_right(s1, set, len_str);
-	left = ft_left(s1, set);
-	if ((int)(right - left) <= 0)
-		return (ft_strdup("\0"));
-	str = malloc((right - left + 2) * sizeof(char));
-	i = 0;
-	while (left <= right)
+	start = 0;
+	end = ft_strlen(s1) - 1;
+	while (start < ft_strlen(s1) && ft_isset(s1[start], set) == 1)
+		start++;
+	while (end > 0 && ft_isset(s1[end], set) == 1)
+		end--;
+	if (start == ft_strlen(s1))
 	{
-		str[i] = s1[left];
-		left++;
-		i++;
+		str = malloc(1 * sizeof(char));
+		if (str == 0)
+			return (0);
+		str[0] = '\0';
 	}
-	str[i] = '\0';
+	else
+	{
+		str = ft_substr(s1, ((unsigned int)start), (end - start + 1));
+	}
 	return (str);
 }

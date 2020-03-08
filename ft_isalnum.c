@@ -6,21 +6,20 @@
 /*   By: mpasturi <mpasturi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 17:32:00 by mpasturi          #+#    #+#             */
-/*   Updated: 2020/02/01 20:14:30 by mpasturi         ###   ########.fr       */
+/*   Updated: 2020/03/08 17:05:12 by mpasturi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalnum(int c)
+int		ft_isalnum(int c)
 {
-	unsigned char uc;
+	int	resp;
 
-	uc = ((unsigned char)c);
-	if ((uc >= '0' && uc <= '9') ||
-			(uc >= 'A' && uc <= 'Z') || (uc >= 'a' && uc <= 'z'))
-	{
-		return (1);
-	}
-	return (0);
+	if ((c >= '0' && c <= '9') ||
+			(c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
+		resp = 1;
+	else
+		resp = 0;
+	return (resp);
 }

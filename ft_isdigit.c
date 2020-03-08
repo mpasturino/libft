@@ -6,18 +6,17 @@
 /*   By: mpasturi <mpasturi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 17:18:29 by mpasturi          #+#    #+#             */
-/*   Updated: 2020/01/26 18:39:30 by mpasturi         ###   ########.fr       */
+/*   Updated: 2020/03/08 17:01:58 by mpasturi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_isdigit(int c)
 {
-	unsigned char uc;
+	int	resp;
 
-	uc = ((unsigned char)c);
-	if (uc >= '0' && uc <= '9')
-	{
-		return (1);
-	}
-	return (0);
+	if (c >= '0' && c <= '9')
+		resp = 1;
+	else
+		resp = 0;
+	return (resp);
 }

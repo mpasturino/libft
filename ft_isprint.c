@@ -6,18 +6,17 @@
 /*   By: mpasturi <mpasturi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 19:29:44 by mpasturi          #+#    #+#             */
-/*   Updated: 2020/01/26 18:39:56 by mpasturi         ###   ########.fr       */
+/*   Updated: 2020/03/08 16:58:26 by mpasturi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_isprint(int c)
 {
-	unsigned char uc;
+	int	resp;
 
-	uc = ((unsigned char)c);
-	if (uc >= 32 && uc <= 126)
-	{
-		return (1);
-	}
-	return (0);
+	if (c >= 32 && c <= 126)
+		resp = 1;
+	else
+		resp = 0;
+	return (resp);
 }
