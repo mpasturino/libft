@@ -6,7 +6,7 @@
 /*   By: mpasturi <mpasturi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 16:33:19 by mpasturi          #+#    #+#             */
-/*   Updated: 2020/03/08 16:20:27 by mpasturi         ###   ########.fr       */
+/*   Updated: 2020/03/09 20:07:32 by mpasturi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	unsigned int	index;
-	unsigned int	count;
+	size_t	index;
+	size_t	count;
 
 	index = 0;
 	count = 0;
 	if (needle[index] == '\0')
 		return ((char *)haystack);
-	while (haystack[index] != '\0')
+	while (haystack[index] != '\0' && index <= len)
 	{
 		if (haystack[index] == needle[0])
 		{
-			count = 1;
+			count = 0;
 			while (needle[count] != '\0' &&
 				haystack[index + count] == needle[count] &&
-				((index + count) < len))
+				(index + count) < len)
 			{
 				count++;
 			}

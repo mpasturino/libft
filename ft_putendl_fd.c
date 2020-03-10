@@ -6,7 +6,7 @@
 /*   By: mpasturi <mpasturi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 19:25:09 by mpasturi          #+#    #+#             */
-/*   Updated: 2020/02/15 19:29:18 by mpasturi         ###   ########.fr       */
+/*   Updated: 2020/03/09 20:46:42 by mpasturi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ft_putendl_fd(char *s, int fd)
 	size_t	i;
 
 	i = 0;
+	if (s == 0)
+		return (0);
 	while (s[i] != '\0')
 	{
 		write(fd, &s[i], 1);
